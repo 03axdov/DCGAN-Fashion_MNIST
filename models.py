@@ -2,7 +2,10 @@ import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 import tensorflow as tf
+
 import matplotlib.pyplot as plt
+
+import PIL.Image as Image
 
 
 def make_generator_model():
@@ -30,10 +33,27 @@ def make_generator_model():
     return model
 
 
+def make_discriminator_model():
+    model = tf.keras.Sequential([
+        tf.keras.layers.Conv2D(64, (5,5), strides=(2,2), padding="same", input_shape=(28, 28, 1), activation="leaky"),
+        tf.keras.layers.LeakyReLU(),
+        tf.keras.layers.Dropout(0.3),
+
+        tf.keras.layers.Conv2D(128, (5,5), strides=(2,2), padding="same"),
+        tf.keras.layers.LeakyReLU(),
+        tf.keras.layers.Dropout(0.3),
+
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(1)
+    ])
+
+    return model
+
+
 if __name__ == "__main__":
     generator = make_generator_model()
     noise = tf.random.normal([1, 100])
     generated_image = generator(noise)
-    print(generated_image.shape)
 
     plt.imshow(generated_image[0, :, :, 0], cmap="gray")
+    plt.savefig("Images/mygraph.png")  # plt.show() not working for me

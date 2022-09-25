@@ -17,12 +17,7 @@ def main():
     train_dataset = load_data()
 
     generator = make_generator_model()
-    noise = tf.random.normal([1, 100])
-    generated_image = generator(noise)
-
-    img = Image.fromarray(generated_image.numpy())
-    img.show()
-
+    
 
 if __name__ == "__main__":
     main()
