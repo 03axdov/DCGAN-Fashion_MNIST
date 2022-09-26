@@ -1,4 +1,4 @@
-# DCGAN
+# DCGAN FASHION_MNIST
 An implementation of deep convolutional generative adversial networks in order to generate images of clothes based on the FASHION_MNIST dataset.
 GANs use two different models, one so-called generator and one discriminator. The generator, in this case, generated images while the discriminator attempts to determine real images from fake ones.
 They use different loss functions, of course, with the generators loss function depending on the discriminators predictions.
