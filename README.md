@@ -11,3 +11,7 @@ The generator generates these images based on random 'noise' as seen below.
 The model creates relatively convincing digits fairly quickly, as seen below.
 
 ![dcgan](https://user-images.githubusercontent.com/62298758/192326434-e743a2ac-584d-4ff0-b727-3bd6618cea2b.gif)
+
+The last generated image
+
+![image_at_epoch_50](https://user-images.githubusercontent.com/62298758/192327228-3f57b565-d73d-4d8b-8df5-ccc1951377ad.png)
