@@ -4,7 +4,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = '3'
 import tensorflow as tf
 import glob
 import matplotlib.pyplot as plt
-import imageio
+import imageio.v2 as imageio
 import numpy as np
 import PIL.Image as Image
 import time
@@ -106,8 +106,29 @@ def main():
         plt.show()  # Must close the window before code continues
 
 
-    train(train_dataset, EPOCHS)
+    # train(train_dataset, EPOCHS)
+
+    # checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
+
+    def display_image(epoch_no):
+        img = Image.open(f"./Images/image_at_epoch_{epoch_no}.png")
+        img.show()
+        return img
+
+    # display_image(EPOCHS)
+
+    anim_file = "Images/dcgan.gif"
     
+    with imageio.get_writer(anim_file, mode="I") as writer:
+        filenames = glob.glob("Images/image*.png")
+        filenames = sorted(filenames)
+        for filename in filenames:
+            image = imageio.imread(filename)
+            writer.append_data(image)
+
+        image = imageio.imread(filename)
+        writer.append_data(image)
+
 
 if __name__ == "__main__":
     main()
