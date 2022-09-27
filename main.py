@@ -42,7 +42,7 @@ def main():
         discriminator=discriminator
     )
 
-    EPOCHS = 50
+    EPOCHS = 30
     noise_dim = 100
     num_examples_to_generate = 16
     seed = tf.random.normal([num_examples_to_generate, noise_dim])

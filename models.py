@@ -56,7 +56,7 @@ if __name__ == "__main__":
     generated_image = generator(noise)
     print(f"Generated Image: {generated_image.shape}")
 
-    plt.imshow(generated_image[0, :, :, 0], cmap="gray")
+    plt.imshow(generated_image[0, :, :, 0])
     plt.show()
 
     discriminator = make_discriminator_model()
